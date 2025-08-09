@@ -140,43 +140,63 @@
                 </div>
               </div>
             </div>
+            <div class="form-wrap" style="margin-top: 15px;">
+              <label class="form-label" for="contact-captcha">验证码</label>
+              <div style="display: flex; align-items: center;">
+                <input class="form-input" id="contact-captcha" type="text" name="captcha" data-constraints="@Required" style="width: 120px; margin-right: 10px;" />
+                <img id="captcha-img" src="http://localhost:3000/api/captcha" alt="验证码" style="height: 40px; cursor: pointer;" title="点击刷新验证码" />
+              </div>
+            </div>
             <button class="button button-lg button-primary button-zakaria" type="submit">提交信息</button>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.querySelector('.rd-mailform');
- 
-        form.addEventListener('submit', function (event) {
+        const captchaImg = document.getElementById('captcha-img');
+
+        // 点击验证码图片刷新
+        captchaImg.addEventListener('click', function () {
+            this.src = 'http://localhost:3000/api/captcha?' + Date.now();
+        });
+
+        form.addEventListener('submit', async function (event) {
             event.preventDefault(); // 防止表单的默认提交行为
- 
+
             const formData = new FormData(form);
             const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
                 phone: formData.get('phone'),
-                message: formData.get('message')
+                message: formData.get('message'),
+                captcha: formData.get('captcha')
             };
- 
-            fetch(form.action, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    const errData = await response.json();
+                    const errorMsg = errData.error || '发送消息时出错，请检查内容是否全部填写，验证码是否正确。';
+                    throw new Error(errorMsg);
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Success:', data);
+
+                const resData = await response.json();
+                console.log('Success:', resData);
                 alert('消息已发送！');
-            })
-            .catch(error => {
+                // 发送成功后刷新验证码
+                captchaImg.src = 'http://localhost:3000/api/captcha?' + Date.now();
+                form.reset();
+            } catch (error) {
                 console.error('Error:', error);
-                alert('发送消息时出错，请检查内容是否全部填写。');
-            });
+                alert(error.message);
+                // 出错时刷新验证码
+                captchaImg.src = 'http://localhost:3000/api/captcha?' + Date.now();
+            }
         });
     });
 </script>

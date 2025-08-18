@@ -54,7 +54,7 @@ app.post('/api/contact', async (req, res) => {
     }
 
     // 校验验证码
-    if (!captcha ) { //简单判断是否存在。无实际意义
+    if (!captcha || captcha.toLowerCase() !== req.session.captcha) {
         return res.status(400).json({ error: '验证码错误.' });
     }
 

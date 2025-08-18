@@ -1,15 +1,56 @@
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
   <head>
-    <title>联系我们</title>
+    <title>联系我们 - 苏州千旭精密制造有限公司</title>
+    <meta name="description" content="联系苏州千旭精密制造有限公司，获取专业的精密吊装配件解决方案。公司地址：江苏省苏州市相城区黄埭镇东桥警民路29号1幢1层，联系电话：15850146923。">
+    <meta name="keywords" content="联系我们, 联系电话, 公司地址, 苏州千旭精密制造有限公司">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="/cdn-cgi/apps/head/3ts2ksMwXvKRuG480KNifJ2_JNM.js"></script><link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CLato%7CKalam:300,400,700">
+    <!-- <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CLato%7CKalam:300,400,700"> -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+     <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/> -->
+     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        .custom-input-card{
+            width: 18rem;
+        }
+
+        .custom-input-card .btn:last-child{
+            margin-left: 1rem;
+        }
+
+        .content-window-card{
+            position: relative;
+            width: 23rem;
+            padding: 0.75rem 0 0 1.25rem;
+            box-shadow: none;
+            bottom: 0;
+            left: 0;
+        }
+
+        .content-window-card p{
+            height: 2rem;
+        }
+        .input-item {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+}
+    </style>
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
   </head>
   <body>
@@ -57,8 +98,8 @@
                   <!-- RD Navbar Brand-->
                   <div class="rd-navbar-brand" style=" width:800;height:82">
                     <!--Brand--><a class="brand" href="index.html">
-                     <img class="brand-logo-dark" src="images/logo-2.png" alt="" width="800" height="82"/>
-                     <img class="brand-logo-light" src="images/logo1.png" alt="" width="800" height="82"/></a>
+                     <img class="brand-logo-dark" src="images/logo-2.png" alt="苏州千旭精密制造有限公司" width="800" height="82"/>
+                     <img class="brand-logo-light" src="images/logo1.png" alt="苏州千旭精密制造有限公司" width="800" height="82"/></a>
                   </div>
                 </div>
                 <div class="rd-navbar-aside-element">
@@ -108,7 +149,7 @@
             <h3 class="title-classic-title">取得联系</h3>
             <p class="title-classic-subtitle">我们7*24小时通过传真、电子邮件或电话为您提供服务。 <br class="d-none d-lg-block">您还可以使用我们的快速联系表格，以便就我们的产品提出问题。</p>
           </div>
-          <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="http://localhost:3000/api/contact">
+          <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="https://szqx.ltd/api/contact">
             <div class="row row-20 row-md-30">
               <div class="col-lg-8">
                 <div class="row row-20 row-md-30">
@@ -144,7 +185,7 @@
               <label class="form-label" for="contact-captcha">验证码</label>
               <div style="display: flex; align-items: center;">
                 <input class="form-input" id="contact-captcha" type="text" name="captcha" data-constraints="@Required" style="width: 120px; margin-right: 10px;" />
-                <img id="captcha-img" src="http://localhost:3000/api/captcha" alt="验证码" style="height: 40px; cursor: pointer;" title="点击刷新验证码" />
+                <img id="captcha-img" src="https://szqx.ltd/api/captcha" alt="验证码" style="height: 40px; cursor: pointer;" title="点击刷新验证码" />
               </div>
             </div>
             <button class="button button-lg button-primary button-zakaria" type="submit">提交信息</button>
@@ -155,7 +196,7 @@
 
         // 点击验证码图片刷新
         captchaImg.addEventListener('click', function () {
-            this.src = 'http://localhost:3000/api/captcha?' + Date.now();
+            this.src = 'https://szqx.ltd/api/captcha?' + Date.now();
         });
 
         form.addEventListener('submit', async function (event) {
@@ -189,13 +230,13 @@
                 console.log('Success:', resData);
                 alert('消息已发送！');
                 // 发送成功后刷新验证码
-                captchaImg.src = 'http://localhost:3000/api/captcha?' + Date.now();
+                captchaImg.src = 'https://szqx.ltd/api/captcha?' + Date.now();
                 form.reset();
             } catch (error) {
                 console.error('Error:', error);
                 alert(error.message);
                 // 出错时刷新验证码
-                captchaImg.src = 'http://localhost:3000/api/captcha?' + Date.now();
+                captchaImg.src = 'https://szqx.ltd/api/captcha?' + Date.now();
             }
         });
     });
@@ -204,34 +245,12 @@
          
         </div>
       </section>
-      <!-- Get in touch-->
-      <section class="section section-xl bg-gray-4">
-        <div class="container">
-          <div class="row row-30 justify-content-center">
-            <div class="col-sm-6 col-md-4">
-              <h4>联系电话</h4>
-              <ul class="contacts-classic">
-                <li>Office <a href="tel:#">15850146923</a>
-                </li>
-                <li>Fax <a href="tel:#">15850146923</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <h4>公司地址</h4>
-              <div class="contacts-classic"><a href="#">江苏省苏州市相城区 <br>黄埭镇东桥警民路29号1幢1层</a></div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <h4>邮箱信息</h4>
-              <ul class="contacts-classic">
-                <li><a href="mailTo:#">1943966506@qq.com</a></li>
-                <li><a href="mailTo:#">1943966506@qq.com</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+      <!-- Map-->
+      <section class="section section-xl bg-gray-4" style="text-align: center;">
+        <h3>我们的位置</h3><br><br>
+        <div id="container" style="width: 80%; max-width: 1200px; height: 500px; margin: 0 auto;"></div>
       </section>
-  
+        
       <!-- Page Footer-->
       <footer class="section footer-modern footer-modern-2">
         <div class="footer-modern-body section-xl context-dark">
@@ -267,12 +286,38 @@
         </div>
         <div class="footer-modern-panel text-center">
           <div class="container">
-            <p class="rights"><span>Copyright &copy; 2025.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">备案号：苏ICP00001号;</a></span></p>
+            <p class="rights"><span>Copyright &copy; 2025 苏州千旭精密制造有限公司 All rights reserved. <a href="https://beian.miit.gov.cn" target="_blank">苏ICP备2025201168号-1</a></span></p>
           </div>
         </div>
       </footer>
     </div>
     <div class="snackbars" id="form-output-global"></div>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=bcb48655e4bf3156806051f7fa828573"></script>
+<script type="text/javascript">
+    var infoWindow;
+    var map = new AMap.Map("container", {
+        resizeEnable: true,
+		center: [120.51084,31.404636],
+        zoom: 13
+    });
+
+    //在指定位置打开信息窗体
+    function openInfo() {
+        //构建信息窗体中显示的内容
+        var info = [];
+        info.push("<div style=\"padding:20px 0px 0px 0px;\"><h4 style =\"font-size: 18px;\">苏州千旭精密制造有限公司</h4>");
+
+        info.push("<p >电话 : 15850146923   邮编 : 215100</p>");
+        info.push("<p>地址 :江苏省苏州市相城区黄埭镇东桥警民路29号1幢1层</p></div></div>");
+
+        infoWindow = new AMap.InfoWindow({
+            content: info.join("")  //使用默认信息窗体框样式，显示信息内容
+        });
+
+        infoWindow.open(map, map.getCenter());
+    }
+  openInfo()
+</script>
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
   </body>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://szqx.ltd/sitemap.xml
+Sitemap: https://szqx.ltd/sitemap.xml

@@ -121,3 +121,40 @@ if(plugins.slick.length){for(var i=0;i<plugins.slick.length;i++){var $slickItem=
 if(plugins.stepper.length){plugins.stepper.stepper({labels:{up:"",down:""}});}
 if(plugins.radioPanel){for(var i=0;i<plugins.radioPanel.length;i++){var $element=$(plugins.radioPanel[i]);$element.on('click',function(){plugins.radioPanel.removeClass('active');$(this).addClass('active');})}}
 if(plugins.multitoggle.length){multitoggles();}});}());
+// 浮窗下载按钮交互功能
+document.addEventListener('DOMContentLoaded', function() {
+    const floatingBtn = document.querySelector('.floating-download-btn');
+    const downloadBtn = document.querySelector('.download-btn');
+    
+    // 设置下载链接（这里需要替换为实际的电子图册文件路径）
+    const brochurePath = '/files/company-brochure.pdf';
+    downloadBtn.setAttribute('href', brochurePath);
+    
+    // 添加点击事件跟踪（可选）
+    downloadBtn.addEventListener('click', function(e) {
+        console.log('用户下载了电子图册');
+        // 这里可以添加Google Analytics或其他统计代码
+    });
+    
+    // 防止在小屏幕上意外点击
+    if (window.innerWidth <= 480) {
+        let touchStartY = 0;
+        let touchEndY = 0;
+        
+        floatingBtn.addEventListener('touchstart', function(e) {
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        floatingBtn.addEventListener('touchend', function(e) {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (Math.abs(touchEndY - touchStartY) < 10) {
+                // 这是一个点击，不是滑动
+                downloadBtn.click();
+            }
+        }
+    }
+});

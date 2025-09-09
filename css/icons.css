@@ -1,0 +1,68 @@
+"/* SVG图标样式 - 解决电子图标乱码问题 */
+
+/* SVG图标基础样式 */
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* 书本图标SVG样式 */
+.icon-book-svg {
+  width: 24px;
+  height: 20px;
+}
+
+/* 下载图标SVG样式 */
+.icon-download-svg {
+  width: 20px;
+  height: 24px;
+}
+
+/* 确保图标在深色背景下可见 */
+.floating-download-btn .icon-svg {
+  fill: #fff;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .icon-book-svg {
+    width: 20px;
+    height: 16px;
+  }
+  
+  .icon-download-svg {
+    width: 16px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-book-svg {
+    width: 18px;
+    height: 14px;
+  }
+  
+  .icon-download-svg {
+    width: 14px;
+    height: 18px;
+  }
+}
+
+/* 隐藏原来的CSS绘制图标 */
+.icon-book,
+.icon-download {
+  display: none;
+}
+
+/* 浮动下载按钮中的图标样式 */
+.floating-download-btn .icon-svg {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* 下载按钮中的图标样式 */
+.download-btn .icon-svg {
+  margin-right: 8px;
+  vertical-align: middle;
+}"
